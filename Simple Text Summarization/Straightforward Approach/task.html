@@ -1,0 +1,64 @@
+<div class="step-text">
+<h5 id="description">Description</h5>
+<p>News texts are usually written by people (at least, for now) and have a certain structure. The <strong>inverted pyramid</strong> is one of the most popular news texts' structures: the first paragraph or even the first few sentences contain the most important information. This part of the text is usually called a <strong>lead</strong><em>.</em> It explains the what, where, when, why, and who of the story.</p>
+<p>Let's use this simple fact to write a good baseline for the text summarization task. Just extract the first <span class="math-tex">\(\sqrt{N}\)</span> sentences of the text (<em><span class="math-tex">\(N\)</span></em> is the number of the source text's sentences), and there you go: you made your first babysteps in NLP!</p>
+<h5 id="objectives">Objectives</h5>
+<p>In this stage, your program should:</p>
+<ol>
+<li>Read an XML file with news texts.</li>
+<li>Extract the headers and the texts.</li>
+<li>Tokenize each text into separate sentences with <code class="language-xml">nltk</code>.</li>
+<li>Extract and print the headers and the first <span class="math-tex">\(\sqrt{N}\)</span> sentences, where <em><span class="math-tex">\(N\)</span></em> is the number of the source text's sentences for each piece of news. To print the first sentences, you should transform <em><span class="math-tex">\(\sqrt{N}\)</span></em> into an integer with the help of the <code class="language-xml">round()</code> function.</li>
+</ol>
+<p>In this stage, your program does not get any input: you should just read the news from the <em>news.xml</em> file. You can take a look at the <a href="https://stepik.org/media/attachments/lesson/394227/news.xml" rel="noopener noreferrer nofollow" target="_blank">news file</a> before you start. Do not make any changes to it.</p>
+<p>Once you got the summaries for each piece of news, print them as follows:</p>
+<pre><code class="language-no-highlight">HEADER: first news header
+TEXT: first news summary
+
+HEADER: second news header
+TEXT: second news summary
+
+HEADER: third news header
+TEXT: third news summary</code></pre>
+<p></p><div class="alert alert-primary">Mind that each sentence within the summary should be on a new line, as shown in the Examples below.</div><p></p>
+<h5 id="example">Example</h5>
+<p><strong>Example 1:</strong> <em>Input file structure</em></p>
+<pre><code class="language-xml">&lt;?xml version='1.0' encoding='UTF8'?&gt;
+&lt;data&gt;
+  &lt;corpus&gt;
+    &lt;news&gt;
+      &lt;value name="head"&gt;New Portuguese skull may be an early relative of Neandertals&lt;/value&gt;
+      &lt;value name="text"&gt;Half a million years ago, several different members of our genus, Homo, had spread throughout Europe and Asia, where some would eventually evolve into Neandertals. 
+      But which ones has been the subject of intense debate. 
+      A newly discovered partial skull is offering another clue to help solve the mystery of the ancestry of Neandertals. 
+      Found in 2014 in the Gruta da Aroeira cave in central Portugal with ancient stone hand axes, the skull (3D reconstruction pictured) is firmly dated to 400,000 years old and an archaic member of our genus, according to a study published today in the Proceedings of the National Academy of Sciences. 
+      The skull shows a new mix of features not seen before in fossil humans - it has traits that link it to Neandertals, such as a fused brow ridge, as well as some primitive traits that resemble other extinct fossils in Europe. 
+      This new combination of features on a well-dated skull may help researchers sort out how different fossils in Europe are related to each other - and which ones eventually evolved into Neandertals.&lt;/value&gt;
+    &lt;/news&gt;
+    &lt;news&gt;
+      &lt;value name="head"&gt;Loneliness May Make Quitting Smoking Even Tougher&lt;/value&gt;
+      &lt;value name="text"&gt;Being lonely may make it harder to quit smoking, a new British study suggests.
+      Using genetic and survey data from hundreds of thousands of people, researchers found that loneliness makes it more likely that someone will smoke.
+      This type of analysis is called Mendelian randomization.
+      ' This method has never been applied to this question before and so the results are novel, but also tentative,'  said co-lead author Robyn Wootton, a senior research associate at the University of Bristol in the United Kingdom.
+      ' We found evidence to suggest that loneliness leads to increased smoking, with people more likely to start smoking, to smoke more cigarettes and to be less likely to quit,'  Wootton said in a university news release.
+      These data mesh with an observation that during the coronavirus pandemic, more British people are smoking.
+      Senior study author Jorien Treur said, ' Our finding that smoking may also lead to more loneliness is tentative, but it is in line with other recent studies that identified smoking as a risk factor for poor mental health.
+      A potential mechanism for this relationship is that nicotine from cigarette smoke interferes with neurotransmitters such as dopamine in the brain.' 
+      Treur is a visiting research associate from Amsterdam UMC.
+      The researchers also looked for a connection between loneliness and drinking but found none.
+      Still, if loneliness causes people to smoke, it is important to alert smoking cessation services so they can add this factor as they help people to quit, the study authors said.
+      The report was published June 16 in the journal Addiction.&lt;/value&gt;
+    &lt;/news&gt;
+  &lt;/corpus&gt;
+&lt;/data&gt;</code></pre>
+<p><em>An example of the output:</em></p>
+<pre><code class="language-no-highlight">HEADER: New Portuguese skull may be an early relative of Neandertals
+TEXT: Half a million years ago, several different members of our genus, Homo, had spread throughout Europe and Asia, where some would eventually evolve into Neandertals.
+But which ones has been the subject of intense debate.
+
+HEADER: Loneliness May Make Quitting Smoking Even Tougher
+TEXT: Being lonely may make it harder to quit smoking, a new British study suggests.
+Using genetic and survey data from hundreds of thousands of people, researchers found that loneliness makes it more likely that someone will smoke.
+This type of analysis is called Mendelian randomization.</code></pre>
+</div>

@@ -1,0 +1,7 @@
+type: framework
+content:
+  - Straightforward Approach
+  - Tokenization and lemmatization
+  - TF-IDF Approach
+  - Extra Weights
+current_task: 3

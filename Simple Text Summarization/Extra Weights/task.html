@@ -1,0 +1,67 @@
+<div class="step-text">
+<h5 id="description">Description</h5>
+<p>TF-IDF is a really good way to summarize a text. Can we modify this approach and add some extra weights or modify TF-IDF itself? How will the results change?</p>
+<p>One of the ways to experiment with it is to multiply TF-IDF by extra weights for the words occurring in the news headline. In this stage, you should modify your program and implement this approach.</p>
+<p>After that, you can compare all the approaches and decide which one works better. It is also great to experiment with your own texts, other approaches, and different evaluation methods.</p>
+<h5 id="objectives">Objectives</h5>
+<p>Steps 1-7 are the same as in the third stage. In this last stage, your program should:</p>
+<ol>
+<li>Read an XML file with news texts.</li>
+<li>Extract the headers and the news texts.</li>
+<li>Process each news story: first, tokenize the text into separate sentences.</li>
+<li>Find <em><em><em><em><span class="math-tex">\(\sqrt{N}\)</span></em></em></em></em>  (<em><em><em><em><em><em><em><em><span class="math-tex">\(N\)</span></em></em></em></em></em></em></em></em> is the number of the source text's sentences).</li>
+<li>Tokenize sentences into words, convert the tokenized words to lowercase, and get rid of punctuation and stopwords.</li>
+<li>Lemmatize each word.</li>
+<li>Pass the collection of preprocessed sentences to the <code class="language-python">TfidfVectorizer</code>. Specify the <code class="language-python">word_tokenize()</code> in the <code class="language-python">tokenizer</code> parameter of the <code class="language-python">TfidfVectorizer</code>:
+	<pre><code class="language-python">model = TfidfVectorizer(tokenizer=word_tokenize)</code></pre>
+</li>
+<li>Preprocess each header in the same way you preprocessed the news texts: tokenize the header, remove stopwords and punctuation from it, and lemmatize the words from the header.</li>
+<li>If a word from the news story occurs in the corresponding news header, multiply its TF-IDF weight by an extra weight. For this task, let the extra weight equal <span class="math-tex">\(3\)</span>.</li>
+<li>Count the mean modified TF-IDF for each sentence.</li>
+<li>Pick <em><span class="math-tex">\(\sqrt{N}\)</span></em> best scoring sentences.</li>
+<li>Print the header and the selected sentences. Mind that you need to print the sentences in the order in which they appear in the original text.</li>
+<li>Repeat Steps 3-12 for each news story.</li>
+</ol>
+<p>Your program does not get any input in this stage: you should just read the news from the <em>news.xml</em> file. Do not make any changes to this file. The number of news pieces in one file may vary. You can find an example of its structure below.</p>
+<p>Once you got the summaries for each piece of news, print them as you did in the previous stages.</p>
+<h5 id="example">Example</h5>
+<p><strong>Example 1:</strong> <em>Input file structure</em></p>
+<pre><code class="language-xml">&lt;?xml version='1.0' encoding='UTF8'?&gt;
+&lt;data&gt;
+  &lt;corpus&gt;
+    &lt;news&gt;
+      &lt;value name="head"&gt;New Portuguese skull may be an early relative of Neandertals&lt;/value&gt;
+      &lt;value name="text"&gt;Half a million years ago, several different members of our genus, Homo, had spread throughout Europe and Asia, where some would eventually evolve into Neandertals. 
+      But which ones has been the subject of intense debate. 
+      A newly discovered partial skull is offering another clue to help solve the mystery of the ancestry of Neandertals. 
+      Found in 2014 in the Gruta da Aroeira cave in central Portugal with ancient stone hand axes, the skull (3D reconstruction pictured) is firmly dated to 400,000 years old and an archaic member of our genus, according to a study published today in the Proceedings of the National Academy of Sciences. 
+      The skull shows a new mix of features not seen before in fossil humans - it has traits that link it to Neandertals, such as a fused brow ridge, as well as some primitive traits that resemble other extinct fossils in Europe. 
+      This new combination of features on a well-dated skull may help researchers sort out how different fossils in Europe are related to each other - and which ones eventually evolved into Neandertals.&lt;/value&gt;
+    &lt;/news&gt;
+    &lt;news&gt;
+      &lt;value name="head"&gt;Loneliness May Make Quitting Smoking Even Tougher&lt;/value&gt;
+      &lt;value name="text"&gt;Being lonely may make it harder to quit smoking, a new British study suggests.
+      Using genetic and survey data from hundreds of thousands of people, researchers found that loneliness makes it more likely that someone will smoke.
+      This type of analysis is called Mendelian randomization.
+      ' This method has never been applied to this question before and so the results are novel, but also tentative,'  said co-lead author Robyn Wootton, a senior research associate at the University of Bristol in the United Kingdom.
+      ' We found evidence to suggest that loneliness leads to increased smoking, with people more likely to start smoking, to smoke more cigarettes and to be less likely to quit,'  Wootton said in a university news release.
+      These data mesh with an observation that during the coronavirus pandemic, more British people are smoking.
+      Senior study author Jorien Treur said, ' Our finding that smoking may also lead to more loneliness is tentative, but it is in line with other recent studies that identified smoking as a risk factor for poor mental health.
+      A potential mechanism for this relationship is that nicotine from cigarette smoke interferes with neurotransmitters such as dopamine in the brain.' 
+      Treur is a visiting research associate from Amsterdam UMC.
+      The researchers also looked for a connection between loneliness and drinking but found none.
+      Still, if loneliness causes people to smoke, it is important to alert smoking cessation services so they can add this factor as they help people to quit, the study authors said.
+      The report was published June 16 in the journal Addiction.&lt;/value&gt;
+    &lt;/news&gt;
+  &lt;/corpus&gt;
+&lt;/data&gt;</code></pre>
+<p><em>Output</em></p>
+<pre><code class="language-no-highlight">HEADER: New Portuguese skull may be an early relative of Neandertals
+TEXT: But which ones has been the subject of intense debate. 
+A newly discovered partial skull is offering another clue to help solve the mystery of the ancestry of Neandertals.
+
+HEADER: Loneliness May Make Quitting Smoking Even Tougher
+TEXT: Being lonely may make it harder to quit smoking, a new British study suggests. 
+This type of analysis is called Mendelian randomization. 
+The researchers also looked for a connection between loneliness and drinking but found none.</code></pre>
+</div>
